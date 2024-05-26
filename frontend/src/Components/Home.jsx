@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./Home.css";
 
 const HomePage = () => {
     const [gia, setGia] = useState('');
@@ -108,44 +109,6 @@ const HomePage = () => {
         setTienTra(money);
     };
 
-    const handleRepairCost= async (event) =>{
-        event.preventDefault();
-        const repairCost ={
-            tenSP: "iPhone 7",
-           
-            pin: 400000,
-            rung: 300000,
-            chanSac: 350000,
-            camTruoc: 350000,
-            camSau: 700000,
-            loa: 300000,
-            nutHome: 300000,
-            vo: 600000,
-            lung: 400000,
-            kinh: 400000,
-            mangHinh: 750000,     
-            khaySim: 200000,
-        }
-        try {
-            const response = await fetch('http://localhost:8001/api/repair', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(repairCost)
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to send data to server');
-            }
-
-            const data = await response.json();
-            console.log('Data from server:', data);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -191,90 +154,95 @@ const HomePage = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="wrapper">
+            <h1>Chọn thông tin sản phẩm</h1>
+           <div className="main">
+             <form  onSubmit={handleSubmit}>
                 
+                
+            <div className="input-text">
                 <div>
-                    <div>
-                        <label htmlFor="">Số điện thoại: </label>
-                        <input
-                            type="text"
-                            placeholder='Số điện thoại'
-                            id='phoneNumber'
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                        />
-                    </div>
+                        <div className="input-column" >
+                            <label htmlFor="">Số điện thoại: </label>
+                            <input
+                                type="text"
+                                placeholder='Số điện thoại'
+                                id='phoneNumber'
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                            />
+                        </div>
 
-                    <div>
-                        <label htmlFor="">Loại sản phẩm: </label>
-                        <select style={{ width: 150 }} value={selectedOption} onChange={handleSelectChange}>
-                            <option value="">Chọn sản phẩm</option>
-                            <option value="iPhone 5">iPhone 5</option>
-                            <option value="iPhone 5S">iPhone 5S</option>
-                            <option value="iPhone 6">iPhone 6</option>
-                            <option value="iPhone 6 Plus">iPhone 6 Plus</option>
-                            <option value="iPhone 6S">iPhone 6S</option>
-                            <option value="iPhone 6S Plus">iPhone 6S Plus</option>
-                            <option value="iPhone 7">iPhone 7</option>
-                            <option value="iPhone 7 Plus">iPhone 7 Plus</option>
-                            <option value="iPhone 8">iPhone 8</option>
-                            <option value="iPhone 8 Plus">iPhone 8 Plus</option>
-                            <option value="iPhone X">iPhone X</option>
-                            <option value="iPhone XR">iPhone XR</option>
-                            <option value="iPhone XS">iPhone XS</option>
-                            <option value="iPhone XS Max">iPhone XS Max</option>
-                            <option value="iPhone 11">iPhone 11</option>
-                            <option value="iPhone 11 Pro">iPhone 11 Pro</option>
-                            <option value="iPhone 11 Pro Max">iPhone 11 Pro Max</option>
-                            <option value="iPhone 12">iPhone 12</option>
-                            <option value="iPhone 12 Mini">iPhone 12 Mini</option>
-                            <option value="iPhone 12 Pro">iPhone 12 Pro</option>
-                            <option value="iPhone 12 Max">iPhone 12 Max</option>
-                            <option value="iPhone 13">iPhone 13</option>
-                            <option value="iPhone 13 Mini">iPhone 13 Mini</option>
-                            <option value="iPhone 13 Pro">iPhone 13 Pro</option>
-                            <option value="iPhone 13 Max">iPhone 13 Max</option>
-                            <option value="iPhone 14">iPhone 14</option>
-                            <option value="iPhone 14 Plus">iPhone 14 Plus</option>
-                            <option value="iPhone 15">iPhone 15</option>
-                            <option value="iPhone 15 Plus">iPhone 15 Plus</option>
-                            <option value="iPhone 15 Pro">iPhone 15 Pro</option>
-                            <option value="iPhone 15 Pro Max">iPhone 15 Pro Max</option>
-                        </select>
-                    </div>
+                        <div className="input-column">
+                            <label htmlFor="">Loại sản phẩm: </label>
+                            <select style={{ width: 150 }} value={selectedOption} onChange={handleSelectChange}>
+                                <option value="">Chọn sản phẩm</option>
+                                <option value="iPhone 5">iPhone 5</option>
+                                <option value="iPhone 5S">iPhone 5S</option>
+                                <option value="iPhone 6">iPhone 6</option>
+                                <option value="iPhone 6 Plus">iPhone 6 Plus</option>
+                                <option value="iPhone 6S">iPhone 6S</option>
+                                <option value="iPhone 6S Plus">iPhone 6S Plus</option>
+                                <option value="iPhone 7">iPhone 7</option>
+                                <option value="iPhone 7 Plus">iPhone 7 Plus</option>
+                                <option value="iPhone 8">iPhone 8</option>
+                                <option value="iPhone 8 Plus">iPhone 8 Plus</option>
+                                <option value="iPhone X">iPhone X</option>
+                                <option value="iPhone XR">iPhone XR</option>
+                                <option value="iPhone XS">iPhone XS</option>
+                                <option value="iPhone XS Max">iPhone XS Max</option>
+                                <option value="iPhone 11">iPhone 11</option>
+                                <option value="iPhone 11 Pro">iPhone 11 Pro</option>
+                                <option value="iPhone 11 Pro Max">iPhone 11 Pro Max</option>
+                                <option value="iPhone 12">iPhone 12</option>
+                                <option value="iPhone 12 Mini">iPhone 12 Mini</option>
+                                <option value="iPhone 12 Pro">iPhone 12 Pro</option>
+                                <option value="iPhone 12 Max">iPhone 12 Max</option>
+                                <option value="iPhone 13">iPhone 13</option>
+                                <option value="iPhone 13 Mini">iPhone 13 Mini</option>
+                                <option value="iPhone 13 Pro">iPhone 13 Pro</option>
+                                <option value="iPhone 13 Max">iPhone 13 Max</option>
+                                <option value="iPhone 14">iPhone 14</option>
+                                <option value="iPhone 14 Plus">iPhone 14 Plus</option>
+                                <option value="iPhone 15">iPhone 15</option>
+                                <option value="iPhone 15 Plus">iPhone 15 Plus</option>
+                                <option value="iPhone 15 Pro">iPhone 15 Pro</option>
+                                <option value="iPhone 15 Pro Max">iPhone 15 Pro Max</option>
+                            </select>
+                        </div>
 
-                    <div>
-                        <label htmlFor="">Giá sản phẩm: </label>
-                        <input
-                            type="number"
-                            placeholder="Giá tiền"
-                            id="gia"
-                            value={gia}
-                            onChange={(e) => setGia(e.target.value)}
-                        />
+                        <div className="input-column">
+                            <label htmlFor="">Giá sản phẩm: </label>
+                            <input
+                                type="number"
+                                placeholder="Giá tiền"
+                                id="gia"
+                                value={gia}
+                                onChange={(e) => setGia(e.target.value)}
+                            />
+                        </div>
+                        <div className="input-column">
+                            <label htmlFor="">Thời gian sử dụng: </label>
+                            <input
+                                type="number"
+                                placeholder="Thời gian"
+                                id="year"
+                                value={thoigianSD}
+                                onChange={(e) => setThoiGianSD(e.target.value)}
+                            />
+                            <select style={{ width: 70 }} value={selectedTime} onChange={handleSelectTimeChange}>
+                                <option value="">Đơn vị</option>
+                                <option value="Thang">Tháng</option>
+                                <option value="Nam">Năm</option>
+                            </select>
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="">Thời gian sử dụng: </label>
-                        <input
-                            type="number"
-                            placeholder="Thời gian"
-                            id="year"
-                            value={thoigianSD}
-                            onChange={(e) => setThoiGianSD(e.target.value)}
-                        />
-                        <select style={{ width: 70 }} value={selectedTime} onChange={handleSelectTimeChange}>
-                            <option value="">Đơn vị</option>
-                            <option value="Thang">Tháng</option>
-                            <option value="Nam">Năm</option>
-                        </select>
-                    </div>
-                </div>
+            </div>
 
-                <div style={{justifyContent:'center', display: 'flex' ,marginTop:30}}>
-                    <div id='check1' style={{ width: 200}}>
+                <div  className="checkbox-wrapper">
+                    <div id='check1' >
                         <div>
-                            <label htmlFor="mangHinh">Màng hình</label>
+                            <label htmlFor="mangHinh">Màn hình</label>
                             <input
                                 type="checkbox"
                                 name="mangHinh"
@@ -398,14 +366,14 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <button type="button" onClick={handleMoney}>Tính tiền</button>    
-                    <button type="button" onClick={handleRepairCost}>test</button>               
-                <button type="submit">Lưu thông tin</button>
+                <div className="btn-wrapper">
+                    <button id="btn1" type="button" onClick={handleMoney}>Tính tiền</button>               
+                    <button id="btn2"  type="submit">Lưu thông tin</button>
                 </div>
                 
                 <label htmlFor="">{tienTra}</label>
             </form>
+           </div>
         </div>
     );
 }

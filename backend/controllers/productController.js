@@ -90,6 +90,77 @@ const productController = {
         })
         await repairCost.save();
         console.log(tenSP, pin, rung, chanSac,  camTruoc, camSau, loa, nutHome, vo,  lung, kinh,  mangHinh,    khaySim,)
+    },
+
+    sendInfoRepair: async(req,res)=>{
+        try{
+        const {
+            tenSP,
+            pin,
+            rung,
+            chanSac,
+            camTruoc,
+            camSau,
+            loa,
+            nutHome,
+            vo,
+            lung,
+            kinh,
+            mangHinh,     
+            khaySim,
+        }=req.body
+        const productRepairCost = await RepairCost.findOne({ tenSP: tenSP });
+
+         let gia =0;
+        if(pin==true){
+            gia+=productRepairCost.pin;
+        }
+        if(rung==true){
+            gia+=productRepairCost.rung;
+        }
+        if(chanSac==true){
+            gia+=productRepairCost.chanSac;
+        }
+        if(camTruoc==true){
+            gia+=productRepairCost.camTruoc;
+        }
+        if(camSau==true){
+            gia+=productRepairCost.camSau;
+        }
+        if(loa==true){
+            gia+=productRepairCost.loa;
+        }
+        if(nutHome==true){
+            gia+=productRepairCost.nutHome;
+        }
+        if(vo==true){
+            gia+=productRepairCost.vo;
+        }
+        if(kinh==true){
+            gia+=productRepairCost.kinh;
+        }
+        if(mangHinh==true){
+            gia+=productRepairCost.mangHinh;
+        }
+        if(khaySim==true){
+            gia+=productRepairCost.khaySim;
+        }
+        
+
+
+        console.log(tenSP, pin, rung, chanSac,  camTruoc, camSau, loa, nutHome, vo,  lung, kinh,  mangHinh,    khaySim,gia)
+
+        
+
+        if (productRepairCost) {
+            res.status(200).json({ productRepairCost, gia });; // Trả về sản phẩm nếu tìm thấy
+        } else {
+            res.status(404).json({ message: 'Không tìm thấy sản phẩm' }); // Trả về thông báo nếu không tìm thấy
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Đã xảy ra lỗi khi tìm kiếm sản phẩm', error: error.message });
+    }
+
     }
 }
 
