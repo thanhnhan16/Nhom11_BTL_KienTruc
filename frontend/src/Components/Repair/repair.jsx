@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import "./repair.css";
 const Repair = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const [mangHinhChecked, setMangHinhChecked] = useState(false);
@@ -106,9 +106,10 @@ const Repair = () => {
 
 
     return(
-        <div>
+        <div className="wrapper">
+            <div className="main">
             <form onSubmit={handleSubmitRepair}>
-            <div className="input-column" >
+            <div className="input-column-repair" >
                             <label htmlFor="">Số điện thoại: </label>
                             <input
                                 type="text"
@@ -118,9 +119,9 @@ const Repair = () => {
                                 onChange={(e) => setPhoneNumber(e.target.value)}
                             />
                         </div>
-            <div>
+            <div className="input-column-repair" >
                         <label htmlFor="">Loại sản phẩm: </label>
-                        <select style={{ width: 150 }} value={selectedOption} onChange={handleSelectChange}>
+                        <select style={{ width: 200, height:40,fontSize:25 }}  value={selectedOption} onChange={handleSelectChange}>
                             <option value="">Chọn sản phẩm</option>
                             <option value="iPhone 5">iPhone 5</option>
                             <option value="iPhone 5S">iPhone 5S</option>
@@ -156,11 +157,12 @@ const Repair = () => {
                         </select>
                     </div>
 
-                    <div style={{justifyContent:'center', display: 'flex' ,marginTop:30}}>
-                    <div id='check1' style={{ width: 200}}>
+                    <div className="checkbox-wrapper" >
+                    <div id='check1'>
                         <div>
-                            <label htmlFor="mangHinh">Màng hình</label>
+                            <label htmlFor="mangHinh">Màn hình</label>
                             <input
+                             className="input-checkbox-1"
                                 type="checkbox"
                                 name="mangHinh"
                                 id="mangHinh"
@@ -171,6 +173,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="pin">Pin</label>
                             <input
+                             className="input-checkbox-2"
                                 type="checkbox"
                                 name="pin"
                                 id="pin"
@@ -181,6 +184,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="rung">Rung</label>
                             <input
+                             className="input-checkbox-3"
                                 type="checkbox"
                                 name="rung"
                                 id="rung"
@@ -191,6 +195,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="camTruoc">Cam trước</label>
                             <input
+                             className="input-checkbox-4"
                                 type="checkbox"
                                 name="camTruoc"
                                 id="camTruoc"
@@ -201,6 +206,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="camSau">Cam sau</label>
                             <input
+                             className="input-checkbox-5"
                                 type="checkbox"
                                 name="camSau"
                                 id="camSau"
@@ -211,6 +217,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="loa">Loa</label>
                             <input
+                             className="input-checkbox-6"
                                 type="checkbox"
                                 name="loa"
                                 id="loa"
@@ -220,10 +227,11 @@ const Repair = () => {
                         </div>
                     </div>
 
-                    <div id='check2' style={{ width: 200 }}>
+                    <div id='check2'>
                         <div>
                             <label htmlFor="vo">Vỏ</label>
                             <input
+                             className="input-checkbox-7"
                                 type="checkbox"
                                 name="vo"
                                 id="vo"
@@ -234,6 +242,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="lung">Lưng</label>
                             <input
+                             className="input-checkbox-8"
                                 type="checkbox"
                                 name="lung"
                                 id="lung"
@@ -244,6 +253,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="kinh">Kính</label>
                             <input
+                             className="input-checkbox-9"
                                 type="checkbox"
                                 name="kinh"
                                 id="kinh"
@@ -254,6 +264,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="nutHome">Nút home</label>
                             <input
+                             className="input-checkbox-10"
                                 type="checkbox"
                                 name="nutHome"
                                 id="nutHome"
@@ -264,6 +275,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="khaySim">Khay sim</label>
                             <input
+                             className="input-checkbox-11"
                                 type="checkbox"
                                 name="khaySim"
                                 id="khaySim"
@@ -274,6 +286,7 @@ const Repair = () => {
                         <div>
                             <label htmlFor="chanSac">Chân sạc</label>
                             <input
+                             className="input-checkbox-12"
                                 type="checkbox"
                                 name="chanSac"
                                 id="chanSac"
@@ -284,11 +297,16 @@ const Repair = () => {
                     </div>
                 </div>
 
-                    <button type="button" onClick={handleCost}>Tính tiền</button>
-                    <button type="submit" >Lưu thông tin</button>
+                <div className="btn-wrapper-repair">
+                    <button id="btn1-repair" type="button" onClick={handleCost}>Tính tiền</button>
+                    <button  id="btn2-repair" type="submit" >Lưu thông tin</button>
                     <label htmlFor="">{repairCost}</label>
+                </div>
+
+                    
 
             </form>
+            </div>
         </div>
     )
 

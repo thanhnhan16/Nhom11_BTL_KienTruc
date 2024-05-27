@@ -25,18 +25,18 @@ const Register = () => {
         <section className="register-container">
             <div className="register-title"> Sign up </div>
             <form onSubmit={handleRegister}>
-                <label>EMAIL</label>
-                <input type="text" placeholder="Enter your email"
+                <label className="label-login">EMAIL</label>
+                <input className="input-login" type="text" placeholder="Enter your email"
                     onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <label>USERNAME</label>
-                <input type="text" placeholder="Enter your username"
+                <label className="label-login">USERNAME</label>
+                <input className="input-login" type="text" placeholder="Enter your username"
                     onChange={(e) => setUsername(e.target.value)}
                 />
 
-                <label>PASSWORD</label>
-                <input type="password" placeholder="Enter your password"
+                <label className="label-login">PASSWORD</label>
+                <input className="input-login" type="password" placeholder="Enter your password"
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit"> Create account </button>

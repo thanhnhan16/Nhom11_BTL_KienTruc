@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import "./statistical.css";
 const Statistical = () => {
     const [productCounts, setProductCounts] = useState([]);
     const [recallProductCounts, setRecallProductCounts] = useState([]);
@@ -65,29 +65,56 @@ const Statistical = () => {
                 <div>
                     <h1>Product Counts</h1>
                     <h2>Product Recall Counts</h2>
-                    <ul>
-                        {recallProductCounts.map((product) => (
-                            <li key={product._id}>
-                                {product._id}: {product.count}
-                            </li>
-                        ))}
-                    </ul>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Recall Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {recallProductCounts.map((product) => (
+                                <tr key={product._id}>
+                                    <td>{product._id}</td>
+                                    <td>{product.count}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                     <h2>Product Repair Counts</h2>
-                    <ul>
-                        {repairProductCounts.map((product) => (
-                            <li key={product._id}>
-                                {product._id}: {product.count}
-                            </li>
-                        ))}
-                    </ul>
-                    <h2>Sum Product Counts</h2>
-                    <ul>
-                        {productCounts.map((product) => (
-                            <li key={product._id}>
-                                {product._id}: {product.count}
-                            </li>
-                        ))}
-                    </ul>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Repair Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {repairProductCounts.map((product) => (
+                                    <tr key={product._id}>
+                                        <td>{product._id}</td>
+                                        <td>{product.count}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>   
+                        <h2>Sum Product Counts</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>Sum Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {productCounts.map((product) => (
+                                        <tr key={product._id}>
+                                            <td>{product._id}</td>
+                                            <td>{product.count}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>     
                 </div>
             )}
         </div>

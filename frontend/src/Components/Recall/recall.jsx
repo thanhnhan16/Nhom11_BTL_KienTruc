@@ -154,7 +154,7 @@ const Recall = () => {
 
     return (
         <div className="wrapper">
-            <h1>Chọn thông tin sản phẩm</h1>
+            <h1 style={{paddingTop:40}}>Chọn thông tin sản phẩm</h1>
            <div className="main">
              <form  onSubmit={handleSubmit}>
                 
@@ -174,7 +174,7 @@ const Recall = () => {
 
                         <div className="input-column">
                             <label htmlFor="">Loại sản phẩm: </label>
-                            <select style={{ width: 150 }} value={selectedOption} onChange={handleSelectChange}>
+                            <select style={{ width: 200 }} value={selectedOption} onChange={handleSelectChange}>
                                 <option value="">Chọn sản phẩm</option>
                                 <option value="iPhone 5">iPhone 5</option>
                                 <option value="iPhone 5S">iPhone 5S</option>
@@ -213,6 +213,7 @@ const Recall = () => {
                         <div className="input-column">
                             <label htmlFor="">Giá sản phẩm: </label>
                             <input
+                         
                                 type="number"
                                 placeholder="Giá tiền"
                                 id="gia"
@@ -229,7 +230,7 @@ const Recall = () => {
                                 value={thoigianSD}
                                 onChange={(e) => setThoiGianSD(e.target.value)}
                             />
-                            <select style={{ width: 70 }} value={selectedTime} onChange={handleSelectTimeChange}>
+                            <select style={{ width: 120 }} value={selectedTime} onChange={handleSelectTimeChange}>
                                 <option value="">Đơn vị</option>
                                 <option value="Thang">Tháng</option>
                                 <option value="Nam">Năm</option>
@@ -243,6 +244,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="mangHinh">Màn hình</label>
                             <input
+                            className="input-checkbox-1"
                                 type="checkbox"
                                 name="mangHinh"
                                 id="mangHinh"
@@ -253,6 +255,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="pin">Pin</label>
                             <input
+                            className="input-checkbox-2"
                                 type="checkbox"
                                 name="pin"
                                 id="pin"
@@ -263,6 +266,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="rung">Rung</label>
                             <input
+                            className="input-checkbox-3"
                                 type="checkbox"
                                 name="rung"
                                 id="rung"
@@ -273,6 +277,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="camTruoc">Cam trước</label>
                             <input
+                            className="input-checkbox-4"
                                 type="checkbox"
                                 name="camTruoc"
                                 id="camTruoc"
@@ -283,6 +288,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="camSau">Cam sau</label>
                             <input
+                            className="input-checkbox-5"
                                 type="checkbox"
                                 name="camSau"
                                 id="camSau"
@@ -293,6 +299,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="loa">Loa</label>
                             <input
+                            className="input-checkbox-6"
                                 type="checkbox"
                                 name="loa"
                                 id="loa"
@@ -302,10 +309,11 @@ const Recall = () => {
                         </div>
                     </div>
 
-                    <div id='check2' style={{ width: 200 }}>
+                    <div id='check2' >
                         <div>
                             <label htmlFor="vo">Vỏ</label>
                             <input
+                            className="input-checkbox-7"
                                 type="checkbox"
                                 name="vo"
                                 id="vo"
@@ -316,6 +324,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="lung">Lưng</label>
                             <input
+                            className="input-checkbox-8"
                                 type="checkbox"
                                 name="lung"
                                 id="lung"
@@ -326,6 +335,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="kinh">Kính</label>
                             <input
+                            className="input-checkbox-9"
                                 type="checkbox"
                                 name="kinh"
                                 id="kinh"
@@ -336,6 +346,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="nutHome">Nút home</label>
                             <input
+                            className="input-checkbox-10"
                                 type="checkbox"
                                 name="nutHome"
                                 id="nutHome"
@@ -346,6 +357,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="khaySim">Khay sim</label>
                             <input
+                            className="input-checkbox-11"
                                 type="checkbox"
                                 name="khaySim"
                                 id="khaySim"
@@ -356,6 +368,7 @@ const Recall = () => {
                         <div>
                             <label htmlFor="chanSac">Chân sạc</label>
                             <input
+                            className="input-checkbox-12"
                                 type="checkbox"
                                 name="chanSac"
                                 id="chanSac"

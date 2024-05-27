@@ -23,12 +23,12 @@ const Login = () => {
         <section className="login-container">
             <div className="login-title"> Log in</div>
             <form onSubmit={hanldeLogin}>
-                <label>USERNAME</label>
-                <input type="text" placeholder="Enter your username"
+                <label className="label-login">USERNAME</label>
+                <input className="input-login" type="text" placeholder="Enter your username"
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <label>PASSWORD</label>
-                <input type="password" placeholder="Enter your password"
+                <label className="label-login">PASSWORD</label>
+                <input className="input-login" type="password" placeholder="Enter your password"
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit"> Continue </button>
