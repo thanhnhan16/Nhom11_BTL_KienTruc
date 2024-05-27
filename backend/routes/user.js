@@ -10,7 +10,7 @@ router.get("/", middlewareController.verifyToken, userController.getAllUsers);
 router.delete("/:id", middlewareController.verifyTokenAndAdmin, userController.deleteUser);
 
 //Forgot Password
-router.post("/forgotPassword/:id", userController.forgotPasswordUser);
+router.put("/forgotPassword", userController.forgotPasswordUser);
 
 
 module.exports = router;

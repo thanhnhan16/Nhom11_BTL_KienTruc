@@ -1,5 +1,6 @@
 const Product = require('../models/Product');
 const RepairCost = require('../models/RepairCost');
+const RepairProduct =require('../models/RepairProduct')
 
 const productController = {
     getInfomation: async (req, res) => {
@@ -25,9 +26,11 @@ const productController = {
                 khaySim
             } = req.body;
 
+            soDienThoai=phoneNumber
+
             const product = new Product({
                 tienTra,
-                phoneNumber,
+                soDienThoai,
                 thoigianSD,
                 donViThoiGian,
                 chatLuong,
@@ -161,7 +164,55 @@ const productController = {
         res.status(500).json({ message: 'Đã xảy ra lỗi khi tìm kiếm sản phẩm', error: error.message });
     }
 
-    }
+    },
+    sendInfoRepairForSave: async (req,res)=>{
+        try {
+            const {
+                tenSP,      
+                soDienThoai,  
+                pin,
+                rung,
+                chanSac,
+                camTruoc,
+                camSau,
+                loa,
+                nutHome,
+                vo,
+                lung,
+                kinh,
+                mangHinh,     
+                khaySim,
+            }=req.body
+    
+            const information = new RepairProduct({
+                tenSP,    
+                soDienThoai,    
+                pin,
+                rung,
+                chanSac,
+                camTruoc,
+                camSau,
+                loa,
+                nutHome,
+                vo,
+                lung,
+                kinh,
+                mangHinh,     
+                khaySim,
+            })
+            await information.save();
+            console.log(tenSP, pin, rung, chanSac,  camTruoc, camSau, loa, nutHome, vo,  lung, kinh,  mangHinh,    khaySim,)
+            return res.status(200).json({ message: 'Product saved successfully', information });
+        } catch (error) {
+            console.log("Error:", error);
+            return res.status(500).json({ message: "Đã xảy ra lỗi", error: error.message });
+        }
+        
+        
+    },
+
+
+   
 }
 
 module.exports = productController;

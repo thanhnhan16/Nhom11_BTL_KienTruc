@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import "./Home.css";
+import "./recall.css";
 
-const HomePage = () => {
+const Recall = () => {
     const [gia, setGia] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [thoigianSD, setThoiGianSD] = useState('');
@@ -112,13 +112,9 @@ const HomePage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const info = {
-            tienTra,
-            phoneNumber,
-            thoigianSD,
-            donViThoiGian: selectedTime,
-            chatLuong,
+        const infoRepair = {
             tenSP: selectedOption,
+            soDienThoai: phoneNumber,
             mangHinh: mangHinhChecked,
             pin: pinChecked,
             rung: rungChecked,
@@ -137,9 +133,9 @@ const HomePage = () => {
             const response = await fetch('http://localhost:8001/api/sendInfo', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(info)
+                body: JSON.stringify(infoRepair),
             });
 
             if (!response.ok) {
@@ -147,11 +143,14 @@ const HomePage = () => {
             }
 
             const data = await response.json();
+            alert('Thông tin đã được lưu!');
             console.log('Data from server:', data);
         } catch (error) {
             console.error('Error:', error);
+            alert('Đã xảy ra lỗi khi gửi thông tin. Vui lòng thử lại.');
         }
     };
+    
 
     return (
         <div className="wrapper">
@@ -378,4 +377,4 @@ const HomePage = () => {
     );
 }
 
-export default HomePage;
+export default Recall;

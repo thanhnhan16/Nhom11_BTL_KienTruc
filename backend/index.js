@@ -24,6 +24,7 @@ app.use(express.json());
 app.use("/", productRouter);
 //create user
 app.use("/v1/auth", authRouter);
+//app.use("/", authRouter);
 
 //Get All User
 app.use("/v1/user", userRouter);

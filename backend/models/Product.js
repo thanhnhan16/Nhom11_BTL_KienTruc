@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({
     tienTra: Number,
-    phoneNumber: String,
+    soDienThoai: String,
     thoigianSD: String,
     donViThoiGian: String,
     chatLuong: Number,
@@ -23,6 +23,6 @@ const ProductSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Product = mongoose.model('Product', ProductSchema);
+const Product = mongoose.model('recalledproducts', ProductSchema);
 
 module.exports = Product;

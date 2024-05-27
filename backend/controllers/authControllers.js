@@ -10,6 +10,7 @@ const authController = {
             const salt = await bcrypt.genSalt(10);
             const hashed = await bcrypt.hash(req.body.password, salt);
 
+
             //New user
             const newUser = await new User({
                 username: req.body.username,
@@ -22,7 +23,7 @@ const authController = {
             res.status(200).json(user);
 
         } catch (error) {
-            res.status(500).json(err);
+            res.status(500).json(error);
         }
     },
 
@@ -49,16 +50,28 @@ const authController = {
                     admin: user.admin,
                 },
                     process.env.JWT_ACCESS_KEY,
-                    { expiresIn: "20d" }
+                    { expiresIn: "1000s" }
                 );
+                //refreshToken
+                const refreshToken = jwt.sign({
+                    id: user.id,
+                    admin: user.admin,
+                },
+                    process.env.JWT_REFESH_KEY,
+                    {
+                        expiresIn: "365d"
+
+                    });
+
+
                 const { password, ...others } = user._doc;
 
-                res.status(200).json({ ...others, accesssToken });
+                res.status(200).json({ ...others, accesssToken, refreshToken });
 
 
             }
         } catch (error) {
-            res.status(500).json(err)
+            res.status(500).json(error)
         }
     }
 };

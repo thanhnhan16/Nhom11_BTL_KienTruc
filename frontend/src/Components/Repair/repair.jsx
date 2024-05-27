@@ -15,13 +15,14 @@ const Repair = () => {
     const [nutHomeChecked, setNutHomeChecked] = useState(false);
     const [khaySimChecked, setKhaySimChecked] = useState(false);
     const [repairCost, setRepairCost] = useState(null);
+    const [phoneNumber,setPhoneNumber]=useState('')
 
 
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value);
     };
 
-   const handleTest = async (event)=>{
+   const handleCost = async (event)=>{
         event.preventDefault();
        
         const infoRepair = {
@@ -61,14 +62,62 @@ const Repair = () => {
         }
     }
 
-    const handleSubmit = async(event)=>{
+    const handleSubmitRepair = async(event)=>{
+        event.preventDefault();
+       
+        const infoRepair = {
+            tenSP: selectedOption,
+            soDienThoai:phoneNumber,
+            mangHinh: mangHinhChecked,
+            pin: pinChecked,
+            rung: rungChecked,
+            camTruoc: camTruocChecked,
+            camSau: camSauChecked,
+            chanSac: chanSacChecked,
+            loa: loaChecked,
+            vo: voChecked,
+            lung: lungChecked,
+            kinh: kinhChecked,
+            nutHome: nutHomeChecked,
+            khaySim: khaySimChecked,
+        }
 
+        try {
+            const response = await fetch('http://localhost:8001/api/sendInfoRepairForSave', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(infoRepair)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send data to server');
+            }
+
+            const data = await response.json();
+            alert('Thông tin đã được lưu!');
+            console.log('Data from server:', data);
+        
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
 
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmitRepair}>
+            <div className="input-column" >
+                            <label htmlFor="">Số điện thoại: </label>
+                            <input
+                                type="text"
+                                placeholder='Số điện thoại'
+                                id='phoneNumber'
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                            />
+                        </div>
             <div>
                         <label htmlFor="">Loại sản phẩm: </label>
                         <select style={{ width: 150 }} value={selectedOption} onChange={handleSelectChange}>
@@ -235,7 +284,8 @@ const Repair = () => {
                     </div>
                 </div>
 
-                    <button type="button" onClick={handleTest}>test</button>
+                    <button type="button" onClick={handleCost}>Tính tiền</button>
+                    <button type="submit" >Lưu thông tin</button>
                     <label htmlFor="">{repairCost}</label>
 
             </form>
